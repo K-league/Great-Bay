@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer')
-
+// Sets up the SQl connection
 const connection = mysql.createConnection({
     host: 'localhost',
   
@@ -14,7 +14,8 @@ const connection = mysql.createConnection({
     password: '',
     database: 'great_bayDB',
   });
-  
+
+  //This function will ask the initial question to the user
  const greatBayQuestion = () => {
    inquirer.prompt([
     {
@@ -37,7 +38,7 @@ const connection = mysql.createConnection({
    })
  }
 
-
+// This function will ask the product question
  const productQuestions = () => {
      inquirer.prompt([
         {
@@ -57,7 +58,7 @@ const connection = mysql.createConnection({
      })
  }
 
-
+// This is going to create the product based on the users specifications in create product function
   const createProduct = (data) => {
     console.log('Inserting a new product...\n');
     const query = connection.query(
