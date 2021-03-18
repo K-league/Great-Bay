@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
   
     // Be sure to update with your own MySQL password!
     password: '',
-    database: 'great_bayDB',
+    database: 'greatBayDB',
   });
 
   //This function will ask the initial question to the user
@@ -62,7 +62,7 @@ const connection = mysql.createConnection({
   const createProduct = (data) => {
     console.log('Inserting a new product...\n');
     const query = connection.query(
-      'INSERT INTO products SET ?',
+      'INSERT INTO auctions SET ?',
       {
         item: data.item,
         current_bid: data.current_bid,
