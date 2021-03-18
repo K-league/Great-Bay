@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
   
     // Be sure to update with your own MySQL password!
     password: '',
-    database: 'great_bayDB',
+    database: 'greatBayDB',
   });
 
   //This function will ask the initial question to the user
@@ -26,10 +26,10 @@ const connection = mysql.createConnection({
     },
    ])
    .then((data)=>{
-    if(data === 'Post'){
+    if(data.action === 'Post'){
       productQuestions()
     }
-    if (data === 'Bid'){
+    if (data.action === 'Bid'){
       bidQuestions()
     }
     else{
@@ -43,13 +43,13 @@ const connection = mysql.createConnection({
      inquirer.prompt([
         {
             type: 'input',
-            message: 'What is the name the ?',
+            message: 'What is the name of the product?',
             name: 'item',
           },
 
           {
             type: 'input',
-            message: 'What is your user name?',
+            message: 'What is the minimum bid you would like to start with?',
             name: 'current_bid',
           },
      ])
@@ -62,7 +62,7 @@ const connection = mysql.createConnection({
   const createProduct = (data) => {
     console.log('Inserting a new product...\n');
     const query = connection.query(
-      'INSERT INTO products SET ?',
+      'INSERT INTO auctions SET ?',
       {
         item: data.item,
         current_bid: data.current_bid,
