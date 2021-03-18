@@ -26,10 +26,10 @@ const connection = mysql.createConnection({
     },
    ])
    .then((data)=>{
-    if(data === 'Post'){
+    if(data.action === 'Post'){
       productQuestions()
     }
-    if (data === 'Bid'){
+    if (data.action === 'Bid'){
       bidQuestions()
     }
     else{
@@ -43,13 +43,13 @@ const connection = mysql.createConnection({
      inquirer.prompt([
         {
             type: 'input',
-            message: 'What is the name the ?',
+            message: 'What is the name of the product?',
             name: 'item',
           },
 
           {
             type: 'input',
-            message: 'What is your user name?',
+            message: 'What is the minimum bid you would like to start with?',
             name: 'current_bid',
           },
      ])
